@@ -23,7 +23,7 @@ namespace ComputeShopApi.Controllers
 			}
 			else
 			{
-				return StatusCode(404, new { message = "Üres a tábla.", result = computers });
+				return StatusCode(404, new { message = "Sikertelen lekérdezés.", result = computers });
 			}
 		}
 
@@ -37,7 +37,7 @@ namespace ComputeShopApi.Controllers
 			}
 			else
 			{
-				return StatusCode(404, new { message = "Nincs ilyen számítógép az adatbázisban.", result = computer });
+				return StatusCode(404, new { message = "Sikertelen lekérdezés.", result = computer });
 			}
 		}
 
@@ -63,12 +63,12 @@ namespace ComputeShopApi.Controllers
 			}
 			else
 			{
-				return StatusCode(400, new { message = "Nem sikerült hozzáadni", result = computer });
+				return StatusCode(400, new { message = "Sikertelen hozzáadás.", result = computer });
 			}
 		}
 
 		[HttpPut("updateComputer/{id}")]
-		public object UpdateComputer([FromQuery]Guid Id, UpdateComputerDto updatedComputer)
+		public object UpdateComputer([FromQuery] Guid Id, UpdateComputerDto updatedComputer)
 		{
 			var computer = context.Computers.FirstOrDefault(c => c.Id == Id);
 			if (computer != null)
@@ -83,7 +83,56 @@ namespace ComputeShopApi.Controllers
 			}
 			else
 			{
-				return StatusCode(404, new { message = "Nincs ilyen számítógép az adatbázisban.", result = computer });
+				return StatusCode(404, new { message = "Sikertelen frissítés.", result = computer });
 			}
 		}
+
+		[HttpDelete("deleteComputer/{id}")]
+		public object DeleteComputer(Guid id)
+		{
+			var computer = context.Computers.Find(id);
+			if (computer != null)
+			{
+				context.Computers.Remove(computer);
+				context.SaveChanges();
+				return StatusCode(204);
+			}
+			else
+			{
+				return StatusCode(404);
+			}
+		}
+		[HttpPut]
+		public object UpdateOsystem([FromQuery] Guid Id, [FromBody] UpdateComputerDto updatedComputer)
+		{
+			var computer = context.Computers.FirstOrDefault(c => c.Id == Id);
+			if (computer != null)
+			{
+				computer.Brand = updatedComputer.Brand;
+				computer.Type = updatedComputer.Type;
+				computer.Display = double.Parse(updatedComputer.Display);
+				computer.Memory = updatedComputer.Memory;
+				computer.OsId = updatedComputer.OsId;
+				context.SaveChanges();
+				return StatusCode(200, new { message = "Sikeres frissítés.", result = computer });
+			}
+			else
+			{
+				return StatusCode(404, new { message = "Sikertelen frissítés.", result = computer });
+			}
+		}
+		[HttpGet("allOsWithComputers")]
+		public object GetAllOsWithComputers()
+		{
+			var osWithComputers = context.Osystems.Include(os => os.Computers).ToList();
+			if (osWithComputers.Count > 0)
+			{
+				return StatusCode(200, new { message = "Sikeres lekérdezés.", result = osWithComputers });
+			}
+			else
+			{
+				return StatusCode(404, new { message = "Sikertelen lekérdezés.", result = osWithComputers });
+			}
+		}
+	}
 }
