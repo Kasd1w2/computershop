@@ -248,3 +248,4 @@ C:\Users\Denchen\Downloads\ComuterShopApi13BCsop2-main\ComuterShopApi13BCsop2-ma
 C:\Users\Denchen\Downloads\ComuterShopApi13BCsop2-main\ComuterShopApi13BCsop2-main\ComputeShopApi\obj\Debug\net10.0\ComputeShopApi.pdb
 C:\Users\Denchen\Downloads\ComuterShopApi13BCsop2-main\ComuterShopApi13BCsop2-main\ComputeShopApi\obj\Debug\net10.0\ComputeShopApi.genruntimeconfig.cache
 C:\Users\Denchen\Downloads\ComuterShopApi13BCsop2-main\ComuterShopApi13BCsop2-main\ComputeShopApi\obj\Debug\net10.0\ref\ComputeShopApi.dll
+C:\Users\Denchen\Downloads\ComuterShopApi13BCsop2-main\ComuterShopApi13BCsop2-main\ComputeShopApi\obj\Debug\net10.0\ComputeShopApi.sourcelink.json

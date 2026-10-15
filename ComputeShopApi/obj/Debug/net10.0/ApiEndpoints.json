@@ -1,5 +1,115 @@
 [
   {
+    "ContainingType": "ComputeShopApi.Controllers.ComputerController",
+    "Method": "UpdateOsystem",
+    "RelativePath": "computers",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "updatedComputer",
+        "Type": "ComputeShopApi.Models.DTOs.UpdateComputerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputeShopApi.Controllers.ComputerController",
+    "Method": "AddNewComputer",
+    "RelativePath": "computers/addNewComputer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newComputer",
+        "Type": "ComputeShopApi.Models.DTOs.AddNewComputerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputeShopApi.Controllers.ComputerController",
+    "Method": "GetAllOsWithComputers",
+    "RelativePath": "computers/allOsWithComputers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputeShopApi.Controllers.ComputerController",
+    "Method": "DeleteComputer",
+    "RelativePath": "computers/deleteComputer/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputeShopApi.Controllers.ComputerController",
+    "Method": "GetAllComputer",
+    "RelativePath": "computers/getAllComputer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputeShopApi.Controllers.ComputerController",
+    "Method": "GetComputerById",
+    "RelativePath": "computers/getComputerById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputeShopApi.Controllers.ComputerController",
+    "Method": "UpdateComputer",
+    "RelativePath": "computers/updateComputer/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedComputer",
+        "Type": "ComputeShopApi.Models.DTOs.UpdateComputerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ComputeShopApi.Controllers.SystemController",
     "Method": "AddNewOsystem",
     "RelativePath": "osystems",
