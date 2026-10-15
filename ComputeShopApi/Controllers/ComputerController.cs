@@ -3,7 +3,6 @@ using ComputeShopApi.Models;
 using ComputeShopApi.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Components;
 
 namespace ComputeShopApi.Controllers
 {
@@ -11,7 +10,7 @@ namespace ComputeShopApi.Controllers
 	[ApiController]
 	public class ComputerController : ControllerBase
 	{
-		public ComputerShopContext context = new();
+		public ComputerShopDbContext context = new();
 
 		[HttpGet("getAllComputer")]
 		public object GetAllComputer()
@@ -52,7 +51,7 @@ namespace ComputeShopApi.Controllers
 				Display = newComputer.Display,
 				Memory = newComputer.Memory,
 				CreatedTime = DateTime.Now,
-				Os = newComputer.Os
+				OsId = newComputer.OsId
 			};
 
 			if (computer != null)
@@ -68,14 +67,14 @@ namespace ComputeShopApi.Controllers
 		}
 
 		[HttpPut("updateComputer/{id}")]
-		public object UpdateComputer([FromQuery] Guid Id, UpdateComputerDto updatedComputer)
+		public object UpdateComputer([FromRoute(Name = "id")] Guid Id, UpdateComputerDto updatedComputer)
 		{
 			var computer = context.Computers.FirstOrDefault(c => c.Id == Id);
 			if (computer != null)
 			{
 				computer.Brand = updatedComputer.Brand;
 				computer.Type = updatedComputer.Type;
-				computer.Display = double.Parse(updatedComputer.Display);
+				computer.Display = updatedComputer.Display;
 				computer.Memory = updatedComputer.Memory;
 				computer.OsId = updatedComputer.OsId;
 				context.SaveChanges();
@@ -110,7 +109,7 @@ namespace ComputeShopApi.Controllers
 			{
 				computer.Brand = updatedComputer.Brand;
 				computer.Type = updatedComputer.Type;
-				computer.Display = double.Parse(updatedComputer.Display);
+				computer.Display = updatedComputer.Display;
 				computer.Memory = updatedComputer.Memory;
 				computer.OsId = updatedComputer.OsId;
 				context.SaveChanges();

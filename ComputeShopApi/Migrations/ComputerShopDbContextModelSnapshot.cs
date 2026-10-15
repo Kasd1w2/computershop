@@ -22,6 +22,40 @@ namespace ComputeShopApi.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("ComputeShopApi.Models.Computer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<float>("Display")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Memory")
+                        .HasColumnType("int(7)");
+
+                    b.Property<Guid>("OsId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("varchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OsId");
+
+                    b.ToTable("Computers");
+                });
+
             modelBuilder.Entity("ComputeShopApi.Models.Osystem", b =>
                 {
                     b.Property<Guid>("Id")
@@ -45,6 +79,21 @@ namespace ComputeShopApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Osystems");
+                });
+
+            modelBuilder.Entity("ComputeShopApi.Models.Computer", b =>
+                {
+                    b.HasOne("ComputeShopApi.Models.Osystem", "Os")
+                        .WithMany("Computers")
+                        .HasForeignKey("OsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Os");
+                });
+            modelBuilder.Entity("ComputeShopApi.Models.Osystem", b =>
+                {
+                    b.Navigation("Computers");
                 });
 #pragma warning restore 612, 618
         }

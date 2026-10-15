@@ -19,6 +19,8 @@ namespace ComputeShopApi.Models
         public int Memory { get; set; }
         public DateTime CreatedTime { get; set; }
 
+        public Guid OsId { get; set; }
+
         [JsonIgnore]
         public Osystem Os { get; set; }
     }
